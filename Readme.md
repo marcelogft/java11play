@@ -14,5 +14,7 @@ java --add-opens java.base/java.lang=spring.core,javassist --module-path target/
 ```
 
 http://localhost:8080/greeting
+http://localhost:8080/map
 
 http://localhost:8080/actuator
+
