@@ -1,5 +1,6 @@
 package org.mocr.reactive.web.demo;
 
+import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,7 +25,18 @@ public class ReactiveControllerTest {
     }
 
     @Test
-    public void testGetAllTweets() {
+    public void getGreeting () {
+        webTestClient.get().uri("/greeting")
+                .accept(MediaType.APPLICATION_JSON_UTF8)
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody()
+                .consumeWith(response ->
+                        Assertions.assertThat(response.getResponseBody()).isNotNull());
+    }
+
+    @Test
+    public void testGetMap() {
         webTestClient.get().uri("/map")
                 .accept(MediaType.APPLICATION_JSON_UTF8)
                 .exchange()
